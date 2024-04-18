@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 tapo = "*"
 matplotlib = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
