@@ -7,12 +7,16 @@ from tapo import ApiClient, EnergyDataInterval
 import csv
 import matplotlib.pyplot as plt
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 async def main():
     tapo_username = os.getenv("TAPO_USERNAME")
     tapo_password = os.getenv("TAPO_PASSWORD")
     ip_address = os.getenv("IP_ADDRESS")
-    
+
     client = ApiClient(tapo_username, tapo_password)
     device = await client.p110(ip_address)
 

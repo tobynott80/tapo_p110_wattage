@@ -6,6 +6,9 @@ from datetime import datetime
 from tapo import ApiClient, EnergyDataInterval
 import matplotlib.pyplot as plt
 
+from dotenv import load_dotenv
+
+load_dotenv()
 
 async def main():
     tapo_username = os.getenv("TAPO_USERNAME")
