@@ -17,6 +17,14 @@ async def main():
     tapo_password = os.getenv("TAPO_PASSWORD")
     ip_address = os.getenv("IP_ADDRESS")
 
+    benchmark_time = input("Run time in minutes: ")
+    benchmark_time = int(benchmark_time)
+    if benchmark_time <= 0:
+        print("Invalid time entered. Please enter a positive integer.")
+        return
+    benchmark_time *= 60
+    
+
     client = ApiClient(tapo_username, tapo_password)
     device = await client.p110(ip_address)
 
@@ -47,7 +55,7 @@ async def main():
     plt.xlabel("Timestamp")
     plt.ylabel("Power (W)")
     plt.title("Continuous Power Readings")
-    while timer < 2 * 60:
+    while timer < benchmark_time:
         await asyncio.sleep(1)
         current_power = await device.get_current_power()
         print(f"Current power: {current_power.to_dict()}")
